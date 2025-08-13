@@ -17,23 +17,30 @@ class _Home_ScreenState extends State<Home_Screen> {
         title: Text("To Do"),
       ),
       body: ListView.builder(
-          itemCount:5,
+          itemCount:todoList.length,
           itemBuilder: (context, index) {
+            Todo todo=todoList[index];
             return ListTile(
-              title: Text("Title of to do"),
+              title: Text(todo.title),
               subtitle: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text("Description"),
-                  Text("12.12.12"),
+                  Text(todo.description),
+                  Text(todo.date.toString()),
                 ],
               ),
-              trailing: Text("pending")
+              trailing: Text(todo.status),
 
             );
           }),
       floatingActionButton: FloatingActionButton(
-        onPressed: (){},
+        onPressed: (){
+          Todo todo=Todo("pending", id: 1, title: "title", description: "description", date: DateTime.now()
+
+          );
+          todoList.add(todo);
+
+        },
         child: Icon(Icons.add),
       )
 
@@ -46,7 +53,8 @@ class Todo{
   final String title;
   final String description;
   final DateTime date;
+  final status;
 
-  Todo({required this.id, required this.title, required this.description, required this.date});
+  Todo(this.status, {required this.id, required this.title, required this.description, required this.date});
 }
 
