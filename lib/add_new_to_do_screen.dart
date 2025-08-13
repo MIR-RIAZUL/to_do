@@ -10,8 +10,11 @@ class AddNewToDoScreen extends StatefulWidget {
 
 class _AddNewToDoScreenState extends State<AddNewToDoScreen> {
 
+  //this is for control title and description
   final TextEditingController titleController=TextEditingController();
   final TextEditingController descriptionController=TextEditingController();
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -24,11 +27,13 @@ class _AddNewToDoScreenState extends State<AddNewToDoScreen> {
         child: Column(
           children: [
             TextField(
+              controller: titleController,
               decoration: InputDecoration(
                 hintText: "Title",
               ),
             ),
             TextField(
+              controller: descriptionController,
               decoration: InputDecoration(
                 hintText: "Description",
               ),
