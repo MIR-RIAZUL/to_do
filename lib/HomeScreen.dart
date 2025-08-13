@@ -39,6 +39,7 @@ class _Home_ScreenState extends State<Home_Screen> {
 
           );
           todoList.add(todo);
+          setState(() {});
 
         },
         child: Icon(Icons.add),
