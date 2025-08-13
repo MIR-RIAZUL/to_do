@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 
+import 'add_new_to_do_screen.dart';
+import 'to do.dart';
+
 class Home_Screen extends StatefulWidget {
   const Home_Screen({super.key});
 
@@ -35,11 +38,13 @@ class _Home_ScreenState extends State<Home_Screen> {
           }),
       floatingActionButton: FloatingActionButton(
         onPressed: (){
-          Todo todo=Todo("pending", id: 1, title: "title", description: "description", date: DateTime.now()
 
-          );
-          todoList.add(todo);
-          setState(() {});
+          // Todo todo=Todo("pending", id: 1, title: "title", description: "description", date: DateTime.now());
+          //
+          // todoList.add(todo);
+          // setState(() {});
+
+          Navigator.push(context, MaterialPageRoute(builder: (context)=>AddNewToDoScreen()));
 
         },
         child: Icon(Icons.add),
@@ -49,13 +54,4 @@ class _Home_ScreenState extends State<Home_Screen> {
   }
 }
 
-class Todo{
-  final int id;
-  final String title;
-  final String description;
-  final DateTime date;
-  final status;
-
-  Todo(this.status, {required this.id, required this.title, required this.description, required this.date});
-}
 
