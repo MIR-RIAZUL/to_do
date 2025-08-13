@@ -24,6 +24,10 @@ class _Home_ScreenState extends State<Home_Screen> {
           itemBuilder: (context, index) {
             Todo todo=todoList[index];
             return ListTile(
+              onLongPress: (){
+                todoList.removeAt(index);
+                setState(() {});
+              },
               title: Text(todo.title),
               subtitle: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
