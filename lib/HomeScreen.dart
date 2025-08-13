@@ -37,14 +37,13 @@ class _Home_ScreenState extends State<Home_Screen> {
             );
           }),
       floatingActionButton: FloatingActionButton(
-        onPressed: (){
+        onPressed: () async {
 
-          // Todo todo=Todo("pending", id: 1, title: "title", description: "description", date: DateTime.now());
-          //
-          // todoList.add(todo);
-          // setState(() {});
-
-          Navigator.push(context, MaterialPageRoute(builder: (context)=>AddNewToDoScreen()));
+         Todo ?todo = await Navigator.push(context, MaterialPageRoute(builder: (context)=>AddNewToDoScreen()));
+         if(todo!=null){
+           todoList.add(todo);
+           setState(() {});
+         }
 
         },
         child: Icon(Icons.add),

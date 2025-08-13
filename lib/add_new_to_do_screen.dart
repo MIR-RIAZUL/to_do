@@ -1,6 +1,8 @@
 
 import 'package:flutter/material.dart';
 
+import 'to do.dart';
+
 class AddNewToDoScreen extends StatefulWidget {
   const AddNewToDoScreen({super.key});
 
@@ -38,6 +40,11 @@ class _AddNewToDoScreenState extends State<AddNewToDoScreen> {
                 hintText: "Description",
               ),
             ),
+            SizedBox(height: 20,),
+            ElevatedButton(onPressed: (){
+              Todo todo=Todo("pending", title: titleController.text, description: descriptionController.text.trim(), date: DateTime.now());
+              Navigator.pop(context, todo);
+            }, child: Text("Enter"))
 
           ]
         ),
