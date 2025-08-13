@@ -16,6 +16,8 @@ class _AddNewToDoScreenState extends State<AddNewToDoScreen> {
   final TextEditingController titleController=TextEditingController();
   final TextEditingController descriptionController=TextEditingController();
 
+  final GlobalKey<FormState>formkey=GlobalKey<FormState>();
+
 
 
   @override
@@ -26,27 +28,45 @@ class _AddNewToDoScreenState extends State<AddNewToDoScreen> {
       ),
       body:Padding(
         padding: const EdgeInsets.all(12.0),
-        child: Column(
-          children: [
-            TextField(
-              controller: titleController,
-              decoration: InputDecoration(
-                hintText: "Title",
+        child: Form(
+          key: formkey,
+          child: Column(
+            children: [
+              TextFormField(
+                controller: titleController,
+                decoration: InputDecoration(
+                  hintText: "Title",
+                ),
+                validator: (value){
+                  if(value!.isEmpty){
+                    return "Please Enter Title";
+                  }
+                  return null;
+                },
               ),
-            ),
-            TextField(
-              controller: descriptionController,
-              decoration: InputDecoration(
-                hintText: "Description",
+              TextFormField(
+                controller: descriptionController,
+                decoration: InputDecoration(
+                  hintText: "Description",
+                ),
+                validator: (value){
+                  if(value!.isEmpty){
+                    return "Please Enter Description";
+                  }
+                  return null;
+                },
               ),
-            ),
-            SizedBox(height: 20,),
-            ElevatedButton(onPressed: (){
-              Todo todo=Todo("pending", title: titleController.text, description: descriptionController.text.trim(), date: DateTime.now());
-              Navigator.pop(context, todo);
-            }, child: Text("Enter"))
-
-          ]
+              SizedBox(height: 20,),
+              ElevatedButton(onPressed: (){
+                if(!formkey.currentState!.validate()){
+                  return;
+                }
+                Todo todo=Todo("pending", title: titleController.text, description: descriptionController.text.trim(), date: DateTime.now());
+                Navigator.pop(context, todo);
+              }, child: Text("Enter"))
+          
+            ]
+          ),
         ),
       )
 
