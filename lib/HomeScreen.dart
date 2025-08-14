@@ -17,8 +17,12 @@ class _Home_ScreenState extends State<Home_Screen> {
   Widget build(BuildContext context) {
     return  Scaffold(
       appBar: AppBar(
-        title: Text("To Do"),
+        backgroundColor: Colors.teal,
+        centerTitle: true,
+        title: Text("Daily routine"),
       ),
+
+
       body: ListView.builder(
           itemCount:todoList.length,
           itemBuilder: (context, index) {
