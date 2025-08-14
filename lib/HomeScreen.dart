@@ -21,6 +21,33 @@ class _Home_ScreenState extends State<Home_Screen> {
         centerTitle: true,
         title: Text("Daily routine"),
       ),
+      drawer: Drawer(
+        child: ListView(
+          children: [
+            DrawerHeader(
+              decoration: BoxDecoration(
+                color: Colors.teal,
+
+              ),
+              child: Column(
+                children: [
+                  CircleAvatar(
+                    radius: 50,
+                    backgroundImage:
+                      NetworkImage("https://i.pinimg.com/736x/60/f4/b5/60f4b5e836bf321a018c70497fb355e1.jpg"),
+
+                  )
+                ],
+              )
+
+            )
+
+
+          ]
+
+        )
+
+      ),
 
 
       body: ListView.builder(
@@ -37,6 +64,7 @@ class _Home_ScreenState extends State<Home_Screen> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(todo.description),
+                  Text(todo.subject),
                   Text(todo.date.toString()),
                 ],
               ),
