@@ -17,8 +17,8 @@ class _Home_ScreenState extends State<Home_Screen> {
   Widget build(BuildContext context) {
     return  Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.teal,
-        centerTitle: true,
+        backgroundColor: Colors.indigoAccent,
+        centerTitle: true ,
         title: Text("Daily routine"),
       ),
       drawer: Drawer(
@@ -32,16 +32,29 @@ class _Home_ScreenState extends State<Home_Screen> {
               child: Column(
                 children: [
                   CircleAvatar(
+
                     radius: 50,
                     backgroundImage:
                       NetworkImage("https://i.pinimg.com/736x/60/f4/b5/60f4b5e836bf321a018c70497fb355e1.jpg"),
 
+                  ),
+                  Column(
+
+                    children: [
+                      Row(
+                        children: [
+                          Text("RIAZUL"),
+                        ],
+                      ),
+                    ],
                   )
+
                 ],
-              )
+
 
             )
 
+            )
 
           ]
 
