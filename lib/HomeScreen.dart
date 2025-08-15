@@ -99,6 +99,21 @@ class _Home_ScreenState extends State<Home_Screen> {
               ],
             ),
           ),
+          Positioned(
+            top: 250,
+            bottom: 0,
+            left: 0,
+            right: 0,
+            child: Column(
+              children: [
+                ListTile(
+                  leading: Icon(Icons.nightlight),
+                  title: Text("dark mode"),
+                  onTap: () {},
+                ),
+              ],
+            ),
+          ),
         ],
       ),
 
@@ -136,6 +151,49 @@ class _Home_ScreenState extends State<Home_Screen> {
           }
         },
         child: Icon(Icons.add),
+      ),
+    );
+  }
+}
+
+// In your main.dart or wherever your MaterialApp is
+class MyApp extends StatefulWidget {
+  const MyApp({super.key});
+
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  bool isDark = false; // Track theme state
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      theme: isDark
+          ? ThemeData.dark()
+          : ThemeData.light(), // Set theme based on isDark
+      home: Scaffold(
+        drawer: Drawer(
+          child: ListView(
+            children: [
+              // Your other drawer items...
+              ListTile(
+                leading: Icon(Icons.nightlight),
+                title: Text('Dark Mode'),
+                trailing: Switch(
+                  value: isDark,
+                  onChanged: (value) {
+                    setState(() {
+                      isDark = value; // Toggle theme
+                    });
+                  },
+                ),
+              ),
+            ],
+          ),
+        ),
+        // Your app content...
       ),
     );
   }
