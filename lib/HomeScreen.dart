@@ -82,6 +82,23 @@ class _Home_ScreenState extends State<Home_Screen> {
               ],
             ),
           ),
+          Positioned(
+            top: 200,
+            bottom: 0,
+            left: 0,
+            right: 0,
+            child: Column(
+              children: [
+                ListTile(
+                  leading: Icon(Icons.home),
+                  title: Text("Home"),
+                  onTap: () {
+                    Navigator.pop(context);
+                  },
+                ),
+              ],
+            ),
+          ),
         ],
       ),
 
